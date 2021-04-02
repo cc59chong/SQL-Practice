@@ -8,4 +8,3 @@ SELECT CASE
 		  ELSE 'Not A Triangle' 
 		END
 FROM TRIANGLES;
-
