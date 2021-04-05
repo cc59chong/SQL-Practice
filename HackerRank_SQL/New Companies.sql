@@ -22,7 +22,7 @@ SELECT c.company_code,
        c.founder, 
 	   COUNT(DISTINCT e.lead_manager_code), 
 	   COUNT(DISTINCT e.senior_manager_code),
-       COUNT(DISTINCT e.manager_code), 
+           COUNT(DISTINCT e.manager_code), 
 	   COUNT(DISTINCT e.employee_code)
 FROM Company c
 JOIN Employee e ON c.company_code = e.company_code
@@ -35,9 +35,9 @@ ORDER BY c.company_code;
 SELECT company_code, 
        founder,
        (SELECT COUNT(DISTINCT lead_manager_code) FROM Lead_Manager l WHERE l.company_code = c.company_code),
-	   (SELECT COUNT(DISTINCT senior_Manager_code) FROM Senior_Manager s WHERE s.company_code = c.company_code),
-	   (SELECT COUNT(DISTINCT manager_code) FROM Manager m WHERE m.company_code = c.company_code),
-	   (SELECT COUNT(DISTINCT employee_code) FROM Employee e WHERE e.company_code = c.company_code)
+       (SELECT COUNT(DISTINCT senior_Manager_code) FROM Senior_Manager s WHERE s.company_code = c.company_code),
+       (SELECT COUNT(DISTINCT manager_code) FROM Manager m WHERE m.company_code = c.company_code),
+       (SELECT COUNT(DISTINCT employee_code) FROM Employee e WHERE e.company_code = c.company_code)
 FROM Company c
 ORDER BY company_code;
 	 
