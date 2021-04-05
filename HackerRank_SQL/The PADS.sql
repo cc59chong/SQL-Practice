@@ -1,3 +1,8 @@
+SELECT CONCAT(Name,'(', LEFT(Occupation, 1), ')')
+FROM OCCUPATIONS
+ORDER BY Name;
+
+
 SELECT 
 CONCAT (Name, CASE WHEN Occupation = 'Doctor' THEN '(D)'
                    WHEN Occupation = 'Professor' THEN '(P)'
