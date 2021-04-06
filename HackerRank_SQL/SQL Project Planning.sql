@@ -3,7 +3,7 @@ FROM (SELECT Start_Date FROM Projects WHERE Start_Date NOT IN (SELECT End_Date F
      (SELECT End_date FROM Projects WHERE End_date NOT IN (SELECT Start_date FROM Projects)) b
 WHERE Start_date < End_date
 GROUP BY Start_date
-ORDER BY DATEDIFF(Start_date, MIN(End_date)) DESC, Start_date;
+ORDER BY DATEDIFF(Start_date, MIN(End_date)) DESC, Start_date; /*ORDER BY DATEDIFF(MIN(End_date),Start_date), Start_date;*/
 
 
 
