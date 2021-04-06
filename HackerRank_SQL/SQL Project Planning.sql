@@ -18,7 +18,7 @@ FROM
     (SELECT End_date FROM Projects WHERE End_date NOT IN (SELECT Start_date FROM Projects)) b
 /* At this point, we should have a list of start dates and end dates that don't necessarily correspond with each other */
 /* This makes sure we only choose end dates that fall after the start date, and choosing the MIN means for 
-   the particular start_date, we get the closest end datethat does not coincide with the start of another task */
+   the particular start_date, we get the closest end date that does not coincide with the start of another task */
 WHERE Start_date < End_date
 GROUP BY Start_date
 ORDER BY datediff(Start_date, MIN(End_date)) DESC, Start_date
