@@ -8,11 +8,11 @@ HAVING COUNT(c.hacker_id) NOT IN (SELECT DISTINCT COUNT(hacker_id)
                                   WHERE hacker_id <> h.hacker_id
                                   GROUP BY hacker_id
                                   HAVING COUNT(hacker_id) 
-								  < 
+							    < 
 								  (SELECT MAX(x.challenge_count) 
-                                   FROM (SELECT COUNT(c.challenge_id) AS challenge_count
+                                                                   FROM (SELECT COUNT(c.challenge_id) AS challenge_count
          								 FROM Challenges c 
-										 GROUP BY c.hacker_id) as x ))
+									 GROUP BY c.hacker_id) as x ))
 ORDER BY count(c.hacker_id) desc, h.hacker_id 
 
 SELECT MAX(x.challenge_count) 
