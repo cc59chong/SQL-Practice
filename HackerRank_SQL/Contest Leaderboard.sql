@@ -1,3 +1,15 @@
+SELECT h.hacker_id, h.name, SUM(t.score)
+FROM Hackers h
+JOIN (SELECT a.hacker_id, a.challenge_id, Max(a.score) AS score
+      FROM Submissions a, Submissions b
+      WHERE a.hacker_id = b.hacker_id AND a.challenge_id = b.challenge_id
+      GROUP BY a.hacker_id, a.challenge_id) t
+ON h.hacker_id = t.hacker_id
+GROUP BY h.hacker_id, h.name
+HAVING SUM(t.score) > 0
+ORDER BY SUM(t.score) DESC, h.hacker_id
+
+/******************************************************************/
 
 SELECT b.hacker_id, h.name, b.total
 FROM Hackers h
