@@ -35,7 +35,7 @@ SET N = N - 1;
                DISTINCT Salary
           FROM  Employee
           ORDER BY Salary DESC
-          limit N, 1  
+          limit N, 1  /*LIMIT , 1 is equivalent to LIMIT 1 OFFSET N*/
    );
 END
 
