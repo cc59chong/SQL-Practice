@@ -4,4 +4,4 @@
 ## LeetCode--DATABASE 
 > Easy 77/77 [Details](https://github.com/chongchong6/SQL/tree/master/LeetCode/Easy)<br>
 > Medium 32/63 [Details](https://github.com/chongchong6/SQL/tree/master/LeetCode/Medium)<br>
-> Hard 11/22 [Details](https://github.com/chongchong6/SQL/tree/master/LeetCode/Hard)
+> Hard 12/22 [Details](https://github.com/chongchong6/SQL/tree/master/LeetCode/Hard)
