@@ -86,6 +86,7 @@ GROUP BY c.rank;
 |    2 | NULL     | Ketty     | NULL   | Maria |
 +------+----------+-----------+--------+-------+
 
+/* MYSQL*/
 set @r1=0, @r2=0, @r3=0, @r4=0;
 select min(Doctor), min(Professor), min(Singer), min(Actor)
 from(
@@ -114,6 +115,16 @@ SELECT
     case when Occupation='Singer' then Name end as Singer,
     case when Occupation='Actor' then Name end as Actor
 FROM OCCUPATIONS
+
+output:
+NULL Ashley NULL NULL
+NULL NULL NULL Samantha
+Julia NULL NULL NULL
+NULL Britney NULL NULL
+NULL Maria NULL NULL
+NULL Meera NULL NULL
+Priya NULL NULL NULL
+
 /*
 Step 2:
 Create an index column with respect to occupation as "RowNumber".https://imgur.com/QzVCWFn
@@ -146,6 +157,17 @@ SELECT
     case when Occupation='Singer' then Name end as Singer,
     case when Occupation='Actor' then Name end as Actor
 FROM OCCUPATIONS
+
+output:
+1 NULL Ashley NULL NULL
+1 NULL NULL NULL Samantha
+1 Julia NULL NULL NULL
+2 NULL Britney NULL NULL
+3 NULL Maria NULL NULL
+4 NULL Meera NULL NULL
+2 Priya NULL NULL NULL
+5 NULL Priyanka NULL NULL
+
 /*
 Step 4:
 Now, Order_by name then Group_By RowNumber.
