@@ -1,3 +1,4 @@
+/* MS SQL SERVER*/
 SELECT 
 MIN(CASE WHEN Occupation = 'Doctor' THEN Name ELSE NULL END) AS Doctor,
 MIN(CASE WHEN Occupation = 'Professor' THEN Name ELSE NULL END) AS Professor,
