@@ -29,6 +29,16 @@ FROM Activity
 GROUP BY 1
 
 /******************************************************************************/
+SELECT machine_id, ROUND(AVG(t),3) AS processing_time 
+FROM(
+SELECT machine_id,
+       process_id,
+       SUM(CASE WHEN activity_type='end' THEN timestamp END) - SUM(CASE WHEN activity_type='start' THEN timestamp END) AS t
+FROM Activity
+GROUP BY 1,2) temp
+GROUP BY 1
+
+/******************************************************************************/
 SELECT s.machine_id, ROUND(AVG(e.timestamp-s.timestamp), 3) AS processing_time
 FROM Activity s JOIN Activity e ON
     s.machine_id = e.machine_id AND s.process_id = e.process_id AND
