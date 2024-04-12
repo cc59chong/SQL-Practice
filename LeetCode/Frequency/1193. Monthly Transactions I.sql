@@ -1,6 +1,6 @@
 
 SELECT
-    DATE_FORMAT(trans_date, '%Y-%m') AS month, /*SUBSTR(trans_date, 1,7)  LEFT(trans_date, 7*/
+    DATE_FORMAT(trans_date, '%Y-%m') AS month, /*SUBSTR(trans_date, 1,7)  LEFT(trans_date, 7)*/
     country,
     COUNT(id) AS trans_count,
     SUM(state = 'approved') AS approved_count,
