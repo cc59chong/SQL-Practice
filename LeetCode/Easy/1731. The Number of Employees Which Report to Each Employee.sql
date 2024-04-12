@@ -11,6 +11,5 @@ SELECT t1.employee_id, t1.name, COUNT(t2.employee_id) AS reports_count, ROUND(AV
 FROM Employees t1
 JOIN Employees t2
 ON t1.employee_id = t2.reports_to
-WHERE t2.reports_to IS NOT NULL
 GROUP By t2.reports_to
 ORDER BY t1.employee_id
