@@ -1,7 +1,15 @@
 SELECT *
 FROM Users
-WHERE mail REGEXP '^[a-z][a-z0-9._-]*@leetcode.com$';
+WHERE mail REGEXP '^[A-Za-z][A-Za-z0-9_\.\-]*@leetcode(\\?com)?\\.com$'
 
+
+
+
+/*
+SELECT *
+FROM Users
+WHERE mail REGEXP '^[a-z][a-z0-9._-]*@leetcode.com$';
+*/
 
 /*
 SELECT *
