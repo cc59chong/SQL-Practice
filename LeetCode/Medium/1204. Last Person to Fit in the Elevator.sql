@@ -9,6 +9,18 @@ ORDER BY turn DESC LIMIT 1;
 
 /*------------------------------------------------------------------------*/
 
+SELECT person_name
+FROM Queue
+WHERE turn IN 
+(SELECT MAX(turn) AS turn
+FROM
+(SELECT *,
+       SUM(weight) OVER(ORDER BY turn) AS t_weight
+FROM Queue) t
+WHERE t_weight <=1000)
+  
+/*------------------------------------------------------------------------*/
+
 SELECT q1.person_name
 FROM Queue q1 
 JOIN Queue q2 ON q1.turn >= q2.turn
