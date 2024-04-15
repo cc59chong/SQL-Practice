@@ -1,4 +1,14 @@
 SELECT person_name
+FROM
+(SELECT person_name,
+       SUM(weight) OVER(ORDER BY turn) m_weight
+FROM Queue) t
+WHERE m_weight<=1000
+ORDER BY m_weight DESC
+LIMIT 1
+/*------------------------------------------------------------------------*/
+
+SELECT person_name
 FROM (SELECT person_name, 
              weight,
              turn, 
