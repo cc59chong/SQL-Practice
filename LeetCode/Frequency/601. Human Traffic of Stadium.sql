@@ -9,8 +9,8 @@ WHERE
 AND 
     (
        (a.id - b.id = 1 AND b.id - c.id = 1)
-    OR (c.id - b.id = 1 AND b.id - a.id = 1)
-    OR (b.id - a.id = 1 AND a.id - c.id = 1)
+    OR (c.id - b.id = 1 AND b.id - a.id = 1) /*When a.id is the minimum id in the three consecutive ids (c.id > b.id > a.id)*/
+    OR (b.id - a.id = 1 AND a.id - c.id = 1) /*When a.id is in the middle of the three consecutive ids (b.id > a.id > c.id)*/
     )
 ORDER BY visit_date
 	
