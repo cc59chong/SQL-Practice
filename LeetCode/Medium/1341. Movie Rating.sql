@@ -7,13 +7,13 @@ JOIN (SELECT user_id, COUNT(movie_id) AS num
 ON Users.user_id = t1.user_id
 ORDER BY t1.num DESC, name LIMIT 1
 )
-UNION
+UNION ALL
 (
 SELECT title AS results
 FROM Movies
 JOIN (SELECT movie_id, AVG(rating) as rate
       FROM Movie_Rating
-      WHERE MONTH(created_at) = 2
+      WHERE MONTH(created_at) = 2 /*LEFT(created_at,7) = '2020-02'*/
       GROUP BY movie_id) b
 ON Movies.movie_id = b.movie_id
 ORDER BY b.rate DESC, title LIMIT 1
@@ -28,7 +28,7 @@ GROUP BY 1
 ORDER BY count(rating) desc, 1 asc
 Limit 1)
 
-UNION
+UNION ALL
 
 (SELECT title results
 FROM movies m
