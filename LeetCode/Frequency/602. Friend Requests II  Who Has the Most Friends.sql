@@ -25,3 +25,5 @@ FROM t
 GROUP BY id
 ORDER BY num DESC
 LIMIT 1
+
+速度 2>1
