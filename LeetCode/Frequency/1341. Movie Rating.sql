@@ -1,19 +1,3 @@
-(SELECT name AS results
-FROM MovieRating mr
-JOIN Users u ON mr.user_id=u.user_id
-GROUP BY mr.user_id
-ORDER BY COUNT(rating) DESC, name
-LIMIT 1)
-UNION ALL
-(SELECT title AS results
-FROM MovieRating mr
-JOIN Movies m ON mr.movie_id=m.movie_id
-WHERE LEFT(created_at,7) = '2020-02'
-GROUP BY mr.movie_id
-ORDER BY AVG(rating) DESC, title
-LIMIT 1)
-
-
 (
 SELECT name AS results
 FROM Users
@@ -29,8 +13,28 @@ SELECT title AS results
 FROM Movies
 JOIN (SELECT movie_id, AVG(rating) as rate
       FROM Movie_Rating
-      WHERE MONTH(created_at) = 2 /*最好是LEFT(created_at,7) = '2020-02'*/
+      WHERE MONTH(created_at) = 2 /*LEFT(created_at,7) = '2020-02'*/
       GROUP BY movie_id) b
 ON Movies.movie_id = b.movie_id
 ORDER BY b.rate DESC, title LIMIT 1
 )
+
+/*----------------------------------------------------------------*/
+(SELECT name results
+FROM users u
+JOIN movie_rating mr
+ON u.user_id = mr.user_id
+GROUP BY 1
+ORDER BY count(rating) desc, 1 asc
+Limit 1)
+
+UNION ALL
+
+(SELECT title results
+FROM movies m
+JOIN movie_rating mr
+ON m.movie_id = mr.movie_id
+WHERE month(created_at) = 2
+GROUP BY 1
+ORDER BY avg(rating) desc, 1 asc
+Limit 1)
