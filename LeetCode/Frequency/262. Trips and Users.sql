@@ -11,7 +11,16 @@ WHERE t.Request_at BETWEEN '2013-10-01' AND '2013-10-03'
       AND u2.Banned = 'No'
 GROUP BY t.Request_at
 
+/*----------------------------------------------------------------*/
 
+SELECT t.request_at AS Day,
+       ROUND(IFNULL(SUM(CASE WHEN t.status!='completed' THEN 1 END)/COUNT(t.status),0),2) AS 'Cancellation Rate'
+FROM Trips t 
+LEFT JOIN (Users u1, Users u2)
+ON u1.users_id=t.client_id AND u2.users_id=t.driver_id
+WHERE u1.banned='No' AND u2.banned='No' AND t.request_at BETWEEN '2013-10-01' AND '2013-10-03'
+GROUP BY 1
+       
 /*----------------------------------------------------------------*/
 SELECT
 Request_at AS Day,
