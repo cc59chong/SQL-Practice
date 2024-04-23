@@ -1,3 +1,28 @@
+WITH t1 AS(
+SELECT player_id, SUM(score) AS score
+FROM(
+SELECT first_player AS player_id, SUM(first_score) AS score
+FROM Matches
+GROUP BY 1
+UNION ALL
+SELECT second_player AS player_id, SUM(second_score ) AS score
+FROM Matches
+GROUP BY 1) a
+GROUP BY 1)
+, t2 AS(
+SELECT p.player_id,
+       p.group_id,
+       t1.score,
+       DENSE_RANK()OVER(PARTITION BY p.group_id ORDER BY t1.score DESC, p.player_id) rak
+FROM Players p
+JOIN t1 ON p.player_id=t1.player_id)
+
+SELECT group_id, player_id
+FROM t2
+WHERE rak = 1
+
+/*----------------------------------------------------------------------------------------------------------------------------*/
+	
 select group_id, player_id from 
 (
     select p.player_id, 
