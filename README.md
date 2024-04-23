@@ -5,4 +5,4 @@
 > Easy 79/103 [Details](https://github.com/chongchong6/SQL/tree/master/LeetCode/Easy)<br>
 > Medium 39/113 [Details](https://github.com/chongchong6/SQL/tree/master/LeetCode/Medium)<br>
 > Hard 14/49 [Details](https://github.com/chongchong6/SQL/tree/master/LeetCode/Hard)<br>
-> Frequency 56/86 [Details](https://github.com/cc59chong/SQL-Practice/tree/master/LeetCode/Frequency)
+> Frequency 60/86 [Details](https://github.com/cc59chong/SQL-Practice/tree/master/LeetCode/Frequency)
