@@ -1,3 +1,20 @@
+
+WITH t1 AS(
+    SELECT *,
+           ROW_NUMBER() OVER(PARTITION BY company ORDER BY salary) AS r
+    FROM Employee 
+),
+t2 AS(
+SELECT *,
+       COUNT(*) OVER(PARTITION BY company) AS cnt
+FROM t1)
+
+SELECT id, company, salary
+FROM t2
+WHERE r BETWEEN cnt/2 AND cnt/2+1
+
+/*---------------------------------------------------------------------------*/
+
 WITH add_rank AS
     (SELECT id, company, salary,
         ROW_NUMBER()OVER(PARTITION BY company ORDER BY salary) AS rnk
