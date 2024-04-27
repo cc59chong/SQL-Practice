@@ -7,7 +7,20 @@ JOIN (SELECT e1.employee_id AS a, t1.employee_id AS b
             WHERE employee_id != manager_id AND manager_id = 1) t1
       ON e1.manager_id = t1.employee_id OR e1.employee_id = t1.employee_id) t2
 ON e2.manager_id = t2.a OR e2.employee_id = t2.a;
+/*
+| employee_id |
+| ----------- |
+| 2           |
+| 77          |
 
+| a  | b  |
+| -- | -- |
+| 2  | 2  |
+| 4  | 2  |
+| 77 | 77 |
+
+
+*/
 /*-------------------------------------------------------------------------------*/
 
 (SELECT employee_id
