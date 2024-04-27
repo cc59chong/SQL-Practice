@@ -19,3 +19,10 @@ INNER JOIN follow F2 ON F1.follower = F2.followee
 
 */
 
+SELECT followee AS follower, num
+FROM(
+SELECT followee, COUNT(follower) num
+FROM Follow
+GROUP BY followee) t
+WHERE followee IN (SELECT DISTINCT follower FROM Follow)
+ORDER BY follower
