@@ -11,7 +11,7 @@ LEFT JOIN Matches m ON t.team_id = m.host_team OR t.team_id = m.guest_team
 GROUP BY team_id, team_name
 ORDER BY num_points DESC, team_id;
 
-/*-------zj---------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------*/
 
 
 SELECT t.team_id, t.team_name, IFNULL(t2.num_points,0) AS num_points 
