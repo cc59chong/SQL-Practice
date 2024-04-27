@@ -11,10 +11,11 @@ FROM follow F1
 INNER JOIN follow F2 ON F1.follower = F2.followee
 
 
-{"headers": ["F1.followee", "F1.follower", "F2.followee", "F2.follower"], 
- "values": [["A", "B", "B", "C"], 
-            ["A", "B", "B", "D"], 
-            ["B", "D", "D", "E"]]}
+| followee | follower | followee | follower |
+| -------- | -------- | -------- | -------- |
+| Alice    | Bob      | Bob      | Cena     |
+| Alice    | Bob      | Bob      | Donald   |
+| Bob      | Donald   | Donald   | Edward   |
 
 */
 
