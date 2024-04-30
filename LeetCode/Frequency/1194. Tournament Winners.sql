@@ -20,7 +20,22 @@ JOIN t1 ON p.player_id=t1.player_id)
 SELECT group_id, player_id
 FROM t2
 WHERE rak = 1
+	
+/*----------------------------------------------------------------------------------------------------------------------------*/
 
+	
+SELECT group_id,player_id
+FROM(
+SELECT group_id,
+       player_id,
+       SUM(CASE WHEN player_id=first_player THEN first_score
+            WHEN player_id=second_player THEN second_score
+        END) AS score
+FROM Players p
+JOIN Matches m ON p.player_id=m.first_player OR p.player_id=m.second_player
+GROUP BY group_id, player_id
+ORDER by score DESC, player_id) t
+GROUP BY group_id
 /*----------------------------------------------------------------------------------------------------------------------------*/
 	
 select group_id, player_id from 
