@@ -37,3 +37,4 @@ LEFT JOIN (SELECT host_team AS team, SUM(host_point) AS num_points
 ON t.team_id = t2.team
 ORDER BY num_points DESC, t.team_id;
 
+速度 2>1
