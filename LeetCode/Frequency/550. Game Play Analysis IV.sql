@@ -14,8 +14,6 @@ FROM (
   FROM Activity
 ) AS t
 
-
-
 /*----------------------------------------------------------------------------*/ 
 SELECT ROUND(
 COUNT(a.player_id)/(SELECT COUNT(DISTINCT player_id) FROM Activity),2
@@ -27,3 +25,5 @@ FROM Activity
 GROUP BY player_id) f
 ON a.player_id=f.player_id
 WHERE DATEDIFF(a.event_date, f.first_login)=1
+
+速度 1>2>3
