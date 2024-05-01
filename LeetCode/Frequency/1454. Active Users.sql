@@ -4,7 +4,8 @@ FROM Logins a, Logins b
 WHERE a.id=b.id 
   AND DATEDIFF(a.login_date,b.login_date) BETWEEN 1 AND 4
 GROUP BY a.id, a.login_date
-HAVING COUNT(DISTINCT b.login_date)=4;
+HAVING COUNT(DISTINCT b.login_date)=4
+ORDER BY a.id;
 
 
 
