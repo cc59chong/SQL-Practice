@@ -14,4 +14,19 @@ HAVING SUM(price) IN (SELECT MAX(price)
                            FROM Sales
                            GROUP BY seller_id) t )
 
-速度 2>1
+/*--------------------------------------------------------------------------*/
+
+
+SELECT seller_id
+FROM(
+SELECT *,
+       DENSE_RANK()OVER(ORDER BY total DESC) AS rak
+FROM(
+SELECT seller_id,
+       SUM(price) AS total
+FROM Sales
+GROUP BY seller_id) a) b
+WHERE rak =1
+
+  
+速度 2>1>3
