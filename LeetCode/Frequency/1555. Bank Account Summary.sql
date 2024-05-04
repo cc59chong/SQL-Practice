@@ -21,3 +21,21 @@ LEFT JOIN (SELECT paid_to, SUM(amount) AS pda
            FROM Transactions
            GROUP BY paid_to) pt
 ON u.user_id=pt.paid_to
+
+ /*---------------------------------------------------------------------------------------------------------------------------------*/
+
+SELECT user_id, user_name,
+       credit+IFNULL(total_paid,0) AS credit,
+       IF(credit+IFNULL(total_paid,0)>0,'No','Yes') AS credit_limit_breached
+FROM Users u
+LEFT JOIN (SELECT paid_by AS id, SUM(pba) AS total_paid
+           FROM(
+           SELECT paid_by, -SUM(amount) AS pba
+           FROM Transactions
+           GROUP BY paid_by
+           UNION ALL
+           SELECT paid_to, SUM(amount) AS pta
+           FROM Transactions
+           GROUP BY paid_to) a
+           GROUP BY id) b
+ON u.user_id = b.id
