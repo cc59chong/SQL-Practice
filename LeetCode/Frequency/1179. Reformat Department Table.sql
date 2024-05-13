@@ -31,6 +31,7 @@ from department
 group by id;
 
 
+/* 可以不用写else null end*/
 
 /*
 Why use max?
