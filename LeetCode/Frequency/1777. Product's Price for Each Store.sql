@@ -13,7 +13,8 @@ FROM Products
 GROUP BY product_id
 
 
-/* Pivot Table
+/* Pivot Table--MS SQL Server
+
 SELECT *
 FROM (
        SELECT product_id,store,price FROM Products
