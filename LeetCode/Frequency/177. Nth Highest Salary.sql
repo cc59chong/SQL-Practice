@@ -39,3 +39,7 @@ SET N = N - 1;
    );
 
 END
+
+LIMIT 1 OFFSET N = 跳过前 N 行，取 1 行
+
+LIMIT N, 1 = 从第 N 行开始（0-based），取 1 行
