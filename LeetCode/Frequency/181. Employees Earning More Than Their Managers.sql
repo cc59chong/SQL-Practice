@@ -1,6 +1,7 @@
 SELECT a.Name AS Employee
 FROM Employee a
-JOIN Employee b ON a.ManagerId = b.Id
+JOIN Employee b 
+ ON a.ManagerId = b.Id
 WHERE a.Salary > b.Salary;
 
 /*
@@ -15,4 +16,10 @@ JOIN Employee b ON b.ManagerId = a.Id
               [4,  "Max",   90000,    null,        2,   "Henry", 80000,    4]]}
 
 
+
 */
+
+SELECT e.name AS Employee 
+FROM Employee e, Employee m
+WHERE e.managerId = m.id
+AND e.salary > m.salary
